@@ -3,11 +3,7 @@
 ###  下面有介绍python flask部署相关的文章链接。为自己部署的记录文章
 ### 前后端开始进行分离，通过接口进行交互
 
-----------------
-# 敬告各位：本处代码开源后，版权归属本人所有，禁止利用本项目作为出去面试，后果自负。
-----------------
 
-# 体验服地址：http://47.104.199.225 各位体验服数据请勿完全删除。
 
 ### flask +gevent+nginx+Gunicorn+supervisor部署flask应用请用flaskapi_su.conf，用gunicorn部署应用，因为在使用uwsgi部署会影响定时任务的执行
 ### supervisor配置可见super.conf文件。
@@ -33,9 +29,7 @@
 #      1.python app自动化测试平台版本：https://github.com/liwanlei/UFATestPlan
 #      2.python+flask 做后台，实现微信小程序：https://github.com/liwanlei/webchat_app
 #      3.python接口测试非平台版本：https://github.com/liwanlei/FXTest
-# 微信打赏
-![Alt text](https://github.com/liwanlei/FXTest/blob/master/image/weixin.png)
- ----------------
+
 ##    效果图如下：
 
 ### 目录：

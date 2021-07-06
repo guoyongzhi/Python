@@ -6,7 +6,7 @@ from common.requ_case import Api
 from common.panduan import assert_in
 from common.panduan import pare_result_mysql
 from common.log import log_t
-from app.models import InterfaceTest, TestcaseResult,Interfacehuan,mockforcase,Mockserver
+from app.models import InterfaceTest, TestcaseResult,Interfacehuan,Mockserver
 from common.mysqldatabasecur import *
 from config import  redis_host,redis_port,redis_save_result_db,save_duration,xitong_request_toke
 from app import db
@@ -175,35 +175,36 @@ class ApiTestCase():
             else:
                 try:
                     if testcase.rely_mock == True:
-                        m_case = mockforcase.query.filter_by(case=testcase.id).first()
-                        if not m_case:
-                            testcase.Interface_is_tiaoshi = True
-                            testcase.Interface_tiaoshi_shifou = True
-                            db.session.commit()
-                            self.spendlist.append('0')
-                            self.bask_list.append('None')
-                            self.result_pf.append(u'找不到mock依赖的')
-                        me = Mockserver.query.filter_by(id=m_case.mock, delete=False).first()
-                        if not me:
-                            testcase.Interface_is_tiaoshi = True
-                            testcase.Interface_tiaoshi_shifou = True
-                            db.session.commit()
-                            self.spendlist.append('0')
-                            self.bask_list.append('None')
-                            self.result_pf.append(u'mock不存在或者已删除')
-                        try:
-                            me = Api(url=me.path, fangshi=me.methods,
-                                     params=eval(me.params), headers={'token': xitong_request_toke})
-                            result = me.getJson()
-                            da_ta = result[m_case.filed]
-                            yuanlai[m_case.filed] = da_ta
-                        except Exception as e:
-                            case.Interface_is_tiaoshi = True
-                            case.Interface_tiaoshi_shifou = True
-                            db.session.commit()
-                            self.spendlist.append('0')
-                            self.bask_list.append('None')
-                            self.result_pf.append(u'请求mock接口，失败原因：%s' % e)
+                        print(True)
+                        # m_case = mockforcase.query.filter_by(case=testcase.id).first()
+                        # if not m_case:
+                        #     testcase.Interface_is_tiaoshi = True
+                        #     testcase.Interface_tiaoshi_shifou = True
+                        #     db.session.commit()
+                        #     self.spendlist.append('0')
+                        #     self.bask_list.append('None')
+                        #     self.result_pf.append(u'找不到mock依赖的')
+                        # me = Mockserver.query.filter_by(id=m_case.mock, delete=False).first()
+                        # if not me:
+                        #     testcase.Interface_is_tiaoshi = True
+                        #     testcase.Interface_tiaoshi_shifou = True
+                        #     db.session.commit()
+                        #     self.spendlist.append('0')
+                        #     self.bask_list.append('None')
+                        #     self.result_pf.append(u'mock不存在或者已删除')
+                        # try:
+                        #     me = Api(url=me.path, fangshi=me.methods,
+                        #              params=eval(me.params), headers={'token': xitong_request_toke})
+                        #     result = me.getJson()
+                        #     da_ta = result[m_case.filed]
+                        #     yuanlai[m_case.filed] = da_ta
+                        # except Exception as e:
+                        #     case.Interface_is_tiaoshi = True
+                        #     case.Interface_tiaoshi_shifou = True
+                        #     db.session.commit()
+                        #     self.spendlist.append('0')
+                        #     self.bask_list.append('None')
+                        #     self.result_pf.append(u'请求mock接口，失败原因：%s' % e)
                     api = Api(url=self.url[case], fangshi=self.meth[case], params=yuanlai,
                               headers=self.headers[case])
                     apijson = api.getJson()

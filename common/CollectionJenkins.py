@@ -6,7 +6,7 @@
 '''
 jenkins的链接
 '''
-import  jenkins,requests
+import  requests
 from config import  jenkins_password,jenkins_user,jenkins_url
 class Conlenct_jenkins(object):
     def __init__(self):
@@ -14,8 +14,9 @@ class Conlenct_jenkins(object):
         self.jenkins_user=jenkins_user
         self.jenkins_url=jenkins_url
         try:
-            self.servir=jenkins.Jenkins(url=self.jenkins_url,username=self.jenkins_user,
-                                        password=self.jenkins_password,timeout=20)
+            print(111)
+            # self.servir=jenkins.Jenkins(url=self.jenkins_url,username=self.jenkins_user,
+            #                             password=self.jenkins_password,timeout=20)
         except Exception as e:
             print('Jenkins 链接失败!原因：%s'%e)
     def build_job(self,jobname):

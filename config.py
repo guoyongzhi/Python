@@ -6,7 +6,6 @@
 """
 '''配置文件，后台一些需要的配置需要在这里进行配置'''
 import  os
-from apscheduler.jobstores.redis import RedisJobStore
 from apscheduler.executors.pool import ThreadPoolExecutor, ProcessPoolExecutor
 jenkins_url='http://localhost:8080'#jenkins的地址
 jenkins_user='liwanlei'#jenkins的用户名
@@ -17,9 +16,7 @@ Interface_Time_Out=5000#超时时间
 redis_password='123456'
 max_connec_redis=10
 test_fail_try_num=3
-jobstores = {
-    'redis': RedisJobStore(),
-}
+
 executors = {
     'default': ThreadPoolExecutor(10),
     'processpool': ProcessPoolExecutor(3)
@@ -32,6 +29,7 @@ save_duration=24*60*60#配置redis存储的时长
 redis_host='localhost'
 redis_port=6379
 redis_save_result_db=2
+
 class dev(object):#研发环境配置
 	SECRET_KEY = 'BaSeQuie'
 	basedir=os.path.abspath(os.path.dirname(__file__))

@@ -6,7 +6,7 @@
 """
 '''主运行文件，
 使用gevent异步请求，'''
-from  app import  app
+from app import  app
 from app import sched
 from app.home import home
 from app.mock import mock
@@ -27,8 +27,8 @@ from config import Config
 app.config.from_object('config')
 def app_start():
 	sched.start()
-	http_server = WSGIServer(('127.0.0.1', 5000), app)
+	http_server = WSGIServer(('192.168.1.163', 6000), app)
 	http_server.serve_forever()
 if __name__ == '__main__':
-	#app_start()
-	app.run(debug=True)
+	# app_start()
+	app.run(debug=False, host='192.168.1.163', port=6010)

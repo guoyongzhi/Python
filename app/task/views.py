@@ -7,7 +7,7 @@ from  flask import  redirect,request,render_template,url_for,flash
 from app.models import *
 from flask.views import MethodView
 from flask_login import current_user,login_required
-from app import loginManager,sched
+from app import loginManager, sched
 import  time,os
 from common.py_html import createHtml
 from app.test_case.Test_case import ApiTestCase
@@ -249,7 +249,7 @@ class Editmingtaskview(MethodView):
     @login_required
     def get(self,id):
         if current_user.is_sper == True:
-            projects = Project.query.filter_by(status=False).order_by('-id').all()
+            projects = Project.query.filter_by(status=False).order_by('id').all()
         else:
             projects = []
             id = []

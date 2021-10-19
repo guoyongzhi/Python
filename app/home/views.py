@@ -454,19 +454,19 @@ class TesteventVies(MethodView):
     def get(self, page=1):
         if current_user.is_sper == True:
             events = []
-            events.append(Interfacehuan.query.filter_by(status=False).order_by('-id').all())
+            events.append(Interfacehuan.query.filter_by(status=False).order_by(Interfacehuan.id.desc()).all())
         else:
             events = []
             id = []
             for project in current_user.quanxians:
                 if (project.projects.id in id) == False:
                     events.append(
-                        Interfacehuan.query.filter_by(project=project.projects.id, status=False).order_by('-id').all())
+                        Interfacehuan.query.filter_by(project=project.projects.id, status=False).order_by(Interfacehuan.id.desc()).all())
                     id.append(project.projects.id)
         projects_lsit = fenye_list(Ob_list=events, split=PageShow)
         pages = range(1, len(projects_lsit) + 1)
         if current_user.is_sper == True:
-            projects = Project.query.filter_by(status=False).order_by('-id').all()
+            projects = Project.query.filter_by(status=False).order_by(Project.id.desc()).all()
         else:
             projects = []
             for i in current_user.quanxians:

@@ -15,7 +15,7 @@ from app.users import user
 from app.case import case
 from app.Interface import interfac
 from gevent.pywsgi import WSGIServer
-from gevent import  monkey
+from gevent import monkey
 monkey.patch_all()
 app.register_blueprint(home)
 app.register_blueprint(mock)
@@ -31,4 +31,5 @@ def app_start():
 	http_server.serve_forever()
 if __name__ == '__main__':
 	# app_start()
-	app.run(debug=False, host='192.168.1.163', port=6010)
+	sched.start()
+	app.run(debug=True, host='192.168.1.163', port=6010)

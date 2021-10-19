@@ -25,5 +25,5 @@ class ConRedisOper(object):
         res=self.connect().get(key)
         return res
 if __name__=="__main__":
-    m=ConRedisOper(host='localhost',port=6379,db=2)
+    m=ConRedisOper(host='192.168.1.162',port=6379,db=2)
     print(m.getset('2'))
